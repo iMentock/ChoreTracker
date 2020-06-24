@@ -14,7 +14,10 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func dishesBtnPressed(_ sender: UIButton) {
+    }
+    
 
 }
 

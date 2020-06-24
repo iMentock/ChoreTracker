@@ -14,6 +14,7 @@
 		E2AD86EA24A39CF400235A24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2AD86E824A39CF400235A24 /* Main.storyboard */; };
 		E2AD86EC24A39CF500235A24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2AD86EB24A39CF500235A24 /* Assets.xcassets */; };
 		E2AD86EF24A39CF500235A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2AD86ED24A39CF500235A24 /* LaunchScreen.storyboard */; };
+		E2AD86F824A3C9E100235A24 /* ChoreModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2AD86F624A3C9E100235A24 /* ChoreModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E2AD86EB24A39CF500235A24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2AD86EE24A39CF500235A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2AD86F024A39CF500235A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2AD86F724A3C9E100235A24 /* ChoreModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChoreModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E2AD86EB24A39CF500235A24 /* Assets.xcassets */,
 				E2AD86ED24A39CF500235A24 /* LaunchScreen.storyboard */,
 				E2AD86F024A39CF500235A24 /* Info.plist */,
+				E2AD86F624A3C9E100235A24 /* ChoreModel.xcdatamodeld */,
 			);
 			path = "Kai's Chore Checker";
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				E2AD86E524A39CF400235A24 /* FirstViewController.swift in Sources */,
 				E2AD86E124A39CF400235A24 /* AppDelegate.swift in Sources */,
 				E2AD86E324A39CF400235A24 /* SceneDelegate.swift in Sources */,
+				E2AD86F824A3C9E100235A24 /* ChoreModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MindSlayerStudios.Kai-s-Chore-Checker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -316,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MindSlayerStudios.Kai-s-Chore-Checker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -342,6 +346,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E2AD86F624A3C9E100235A24 /* ChoreModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E2AD86F724A3C9E100235A24 /* ChoreModel.xcdatamodel */,
+			);
+			currentVersion = E2AD86F724A3C9E100235A24 /* ChoreModel.xcdatamodel */;
+			path = ChoreModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E2AD86D524A39CF400235A24 /* Project object */;
 }
