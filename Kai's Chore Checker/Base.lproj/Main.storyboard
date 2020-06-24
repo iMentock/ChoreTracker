@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="fuK-x2-GTw" userLabel="Progress Page Stack">
-                                <rect key="frame" x="33" y="181.5" width="702" height="661"/>
+                                <rect key="frame" x="33" y="170.5" width="702" height="683"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kai's Chore Checker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmG-Cj-uV9">
                                         <rect key="frame" x="133.5" y="0.0" width="435.5" height="67.5"/>
@@ -41,15 +41,16 @@
                                         <size key="shadowOffset" width="-2" height="2"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gc5-04-hRc" userLabel="Money Progress">
-                                        <rect key="frame" x="33" y="543.5" width="636" height="34"/>
+                                        <rect key="frame" x="33" y="543.5" width="636" height="56"/>
                                         <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="33" id="aiH-BQ-e3n"/>
+                                            <constraint firstAttribute="height" constant="55" id="aiH-BQ-e3n"/>
                                         </constraints>
                                         <color key="progressTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="trackTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </progressView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="iiD-5J-b7L" userLabel="Money Labels">
-                                        <rect key="frame" x="0.0" y="609.5" width="702" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="631.5" width="702" height="51.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-aq-yJC">
                                                 <rect key="frame" x="0.0" y="0.0" width="41" height="51.5"/>
@@ -98,6 +99,10 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Progress" image="star.fill" catalog="system" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="moneyProgressBar" destination="Gc5-04-hRc" id="Eay-Td-l51"/>
+                        <outlet property="totalEarnedLabel" destination="Km7-rj-85o" id="aqc-D0-DxU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,7 +120,7 @@
                                 <rect key="frame" x="33" y="66" width="702" height="875"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="emA-Mm-ff0" userLabel="Dishes Stack">
-                                        <rect key="frame" x="0.0" y="0.0" width="702" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="702" height="127.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clean" translatesAutoresizingMaskIntoConstraints="NO" id="ASk-fR-xbF" userLabel="Chore Icon">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
@@ -163,7 +168,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="XjD-uM-Ag8" userLabel="Dog Poop Stack">
-                                        <rect key="frame" x="0.0" y="171" width="702" height="149.5"/>
+                                        <rect key="frame" x="0.0" y="148.5" width="702" height="128"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poop" translatesAutoresizingMaskIntoConstraints="NO" id="RL0-H7-Hek" userLabel="Chore Icon">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
@@ -208,7 +213,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-Ci-aNO" userLabel="Laundry Stack">
-                                        <rect key="frame" x="0.0" y="341.5" width="702" height="150"/>
+                                        <rect key="frame" x="0.0" y="297.5" width="702" height="127.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="washing-machine" translatesAutoresizingMaskIntoConstraints="NO" id="7ZU-51-Qy2" userLabel="Chore Icon">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
@@ -253,7 +258,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-Cf-cBk" userLabel="Room 1 Stack">
-                                        <rect key="frame" x="0.0" y="512.5" width="702" height="150"/>
+                                        <rect key="frame" x="0.0" y="446" width="702" height="128"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="7tt-JF-SAX" userLabel="Chore Icon">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
@@ -298,7 +303,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="kZT-on-AhI" userLabel="Room 2 Stack">
-                                        <rect key="frame" x="0.0" y="683.5" width="702" height="191.5"/>
+                                        <rect key="frame" x="0.0" y="595" width="702" height="127.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="room" translatesAutoresizingMaskIntoConstraints="NO" id="F8v-jb-VPQ" userLabel="Chore Icon">
                                                 <rect key="frame" x="0.0" y="0.0" width="85" height="100"/>
@@ -340,6 +345,52 @@
                                         <constraints>
                                             <constraint firstItem="2uz-TL-jOf" firstAttribute="centerY" secondItem="F8v-jb-VPQ" secondAttribute="centerY" id="Qyk-63-bUl"/>
                                             <constraint firstItem="dQy-Ff-Pqx" firstAttribute="centerY" secondItem="F8v-jb-VPQ" secondAttribute="centerY" id="wTc-qn-4hI"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="Axa-5B-ZUv" userLabel="Mistake">
+                                        <rect key="frame" x="0.0" y="743.5" width="702" height="131.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QKD-Yt-2aK" userLabel="Chore Icon">
+                                                <rect key="frame" x="0.0" y="1" width="85" height="77.5"/>
+                                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="8Hc-KZ-ce2"/>
+                                                    <constraint firstAttribute="width" constant="85" id="iCS-Nr-PBl"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eU-TV-F3I">
+                                                <rect key="frame" x="148" y="0.0" width="316.5" height="80"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="225" id="Swi-ZK-0In"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="va7-1W-Loh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="41"/>
+                                                <size key="titleShadowOffset" width="-2" height="2"/>
+                                                <state key="normal" title="Mistake">
+                                                    <color key="titleShadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- $1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EH-sV-Ewc">
+                                                <rect key="frame" x="527.5" y="0.0" width="174.5" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="EuI-V1-PZf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="55"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <size key="shadowOffset" width="-2" height="2"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="4eU-TV-F3I" firstAttribute="centerY" secondItem="QKD-Yt-2aK" secondAttribute="centerY" id="S8d-KZ-hRG"/>
+                                            <constraint firstItem="7EH-sV-Ewc" firstAttribute="centerY" secondItem="QKD-Yt-2aK" secondAttribute="centerY" id="kJk-YP-dgg"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -388,5 +439,6 @@
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="washing-machine" width="512" height="512"/>
+        <image name="xmark.square.fill" catalog="system" width="128" height="114"/>
     </resources>
 </document>

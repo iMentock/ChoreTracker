@@ -21,33 +21,45 @@ class SecondViewController: UIViewController {
     let daddasPassword = "Kai rocks!!"
     
     var total = 0.0
+    let goal = 35.0
     
     var choreData: [NSManagedObject] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Configure core data
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChoreTransaction")
+        
+        // Update total and matching UI
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            
+            // iterate through result and sum total
+            for data in result as! [NSManagedObject] {
                 
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-                
-                let managedContext = appDelegate.persistentContainer.viewContext
-                
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChoreDataSet")
-                
-                do {
-                    let result = try managedContext.fetch(fetchRequest)
-                    print("RESULT")
-                    print(result)
-                    for data in result as! [NSManagedObject] {
-//                        print("iteration")
-//                        print(data.value(forKey: "total")!)
-                        total = data.value(forKey: "total") as! Double
-                    }
-                } catch let error as NSError {
-                    print("Could not fetch. \(error), \(error.userInfo)")
+                if(data.value(forKey: "disabled") as! Bool == true) {
+                    total -= data.value(forKey: "amount") as! Double
+                } else {
+                    total += data.value(forKey: "amount") as! Double
                 }
                 
-                print("Total is -->")
-                print(total)
+                // Break if over or at total
+                if (total >= goal) {
+                    break
+                }
+                
+            }
+        } catch let error as NSError {
+            // TODO: error handling (lol)
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print("total is --> ")
+        print(total)
+                
     }
     
     override func viewDidLoad() {
@@ -61,13 +73,14 @@ class SecondViewController: UIViewController {
     
     
     // Shows modal that asks for simple password to allow adding of money
+    // TODO: Abstract out
     func showPasswordAndProcess(_ value: Double) {
         let alertController = UIAlertController(title: "Dadda",
                                                         message: "Dadda's password please:",
                                                         preferredStyle: .alert)
                 
         let actionCancel = UIAlertAction(title: "Cancel", style: .destructive) { (action:UIAlertAction) in
-                    print("You've pressed the cancel button");
+                    print("Cancelled");
                 }
                 
                 let actionSave = UIAlertAction(title: "Save", style: .default) { (action:UIAlertAction) in
@@ -76,7 +89,6 @@ class SecondViewController: UIViewController {
                     // OMG such amazing security!! lol
                     if (pwEntered.text! == self.daddasPassword) {
                         print("Match")
-                        
                         // Save to total and present first screen with updated total
                         self.saveToTotal(value)
                     } else {
@@ -95,6 +107,8 @@ class SecondViewController: UIViewController {
                 
                 //Present the alert controller
                 present(alertController, animated: true, completion:nil)
+        
+        // TODO: Add error modal for wrong password
     }
     
     func saveToTotal(_ value: Double) {
@@ -104,11 +118,13 @@ class SecondViewController: UIViewController {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        let choreDataEntity = NSEntityDescription.entity(forEntityName: "ChoreDataSet", in: managedContext)!
+        let choreTransactionEntity = NSEntityDescription.entity(forEntityName: "ChoreTransaction", in: managedContext)!
         
-        let choreData = NSManagedObject(entity: choreDataEntity, insertInto: managedContext)
+        let choreData = NSManagedObject(entity: choreTransactionEntity, insertInto: managedContext)
         
-        choreData.setValue(value, forKey: "total")
+        choreData.setValue(value, forKey: "amount")
+        choreData.setValue(Date(), forKey: "date")
+        choreData.setValue(false, forKey: "disabled")
         
         do {
             try managedContext.save()
