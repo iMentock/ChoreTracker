@@ -70,6 +70,7 @@ class FirstViewController: UIViewController {
         if(total <= 0.0) {
             total = 0.0
         }
+    
         
         // Update UI
         totalEarnedLabel.text = "$\(total)"
@@ -84,6 +85,10 @@ class FirstViewController: UIViewController {
             self.leftConstraint?.isActive = true
             self.view.layoutIfNeeded()
         }, completion: nil)
+        
+        if(total >= goal) {
+            self.showSuccess()
+        }
     }
     
     
@@ -97,6 +102,12 @@ class FirstViewController: UIViewController {
         let progressPercentage = (total / goal)
         print(progressPercentage)
         moneyProgressBar.setProgress(Float(progressPercentage), animated: true)
+    }
+    
+    func showSuccess(){
+        let alert = UIAlertController(title:"YOU DID IT :D", message: "Way to go Kai! You have earned enough money to get your Ryan's World Travel Case. Let's go to Target!!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "YAY !!", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
