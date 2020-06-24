@@ -12,11 +12,18 @@ import CoreData
 
 class SecondViewController: UIViewController {
     
+    //ANIMATION
+    @IBOutlet weak var horizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightConstraint: NSLayoutConstraint!
+    
+    
     let dishValue = 1.0
     let dogPoopValue = 0.5
     let laundryValue = 0.5
     let roomAloneValue = 3.0
     let roomHelpValue = 2.0
+    let mistakeValue = -1.0
     
     let daddasPassword = "Kai rocks!!"
     
@@ -27,6 +34,11 @@ class SecondViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // ANIMATION
+        horizontalCenterConstraint.constant += view.bounds.width
+        rightConstraint?.isActive = false
+        leftConstraint?.isActive = false
         
         // Configure core data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -62,14 +74,47 @@ class SecondViewController: UIViewController {
                 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+           UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+               self.horizontalCenterConstraint.constant -= self.view.bounds.width
+               self.rightConstraint?.isActive = true
+               self.leftConstraint?.isActive = true
+               self.view.layoutIfNeeded()
+           }, completion: nil)
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    // UIButton actions
     @IBAction func dishesBtnPressed(_ sender: UIButton) {
         self.showPasswordAndProcess(dishValue)
     }
+    
+    @IBAction func dogPoopBtnPressed(_ sender: UIButton) {
+        self.showPasswordAndProcess(dogPoopValue)
+    }
+    
+    @IBAction func laundryBtnPressed(_ sender: UIButton) {
+        self.showPasswordAndProcess(laundryValue)
+    }
+    
+    @IBAction func room1BtnPressed(_ sender: UIButton) {
+        self.showPasswordAndProcess(roomAloneValue)
+    }
+    
+    @IBAction func room2BtnPressed(_ sender: UIButton) {
+        self.showPasswordAndProcess(roomHelpValue)
+    }
+    
+    @IBAction func mistakeBtnPressed(_ sender: UIButton) {
+        self.showPasswordAndProcess(mistakeValue)
+    }
+    
+    
+    
     
     
     // Shows modal that asks for simple password to allow adding of money
@@ -93,6 +138,7 @@ class SecondViewController: UIViewController {
                         self.saveToTotal(value)
                     } else {
                         print("NOT A MATCH")
+                        self.showPasswordErrorMessage()
                     }
                     
                 }
@@ -132,6 +178,14 @@ class SecondViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        
+        
+    }
+    
+    func showPasswordErrorMessage(){
+        let alert = UIAlertController(title:"Error", message: "Wrong password entered!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 

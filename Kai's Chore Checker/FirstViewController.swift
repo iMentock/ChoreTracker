@@ -17,9 +17,22 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var totalEarnedLabel: UILabel!
     @IBOutlet weak var moneyProgressBar: UIProgressView!
     
+    // Constraint outlets for animations
+    @IBOutlet weak var horizontalCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var rightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//         moneyProgressBar.transform = moneyProgressBar.transform.scaledBy(x: 1, y: 2)
+        
+        // ANIMATION
+        horizontalCenterConstraint.constant -= view.bounds.width
+        totalEarnedLabel.alpha = 0.0
+        rightConstraint?.isActive = false
+        leftConstraint?.isActive = false
+        
+        // Reset total
+        total = 0.0
         
         // Configure core data
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -53,9 +66,24 @@ class FirstViewController: UIViewController {
         print("total is --> ")
         print(total)
         
+        // Juuuuuuust in case
+        if(total <= 0.0) {
+            total = 0.0
+        }
+        
+        // Update UI
         totalEarnedLabel.text = "$\(total)"
         self.updateAndAnimateProgressBar()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.horizontalCenterConstraint.constant += self.view.bounds.width
+            self.totalEarnedLabel.alpha = 1
+            self.rightConstraint?.isActive = true
+            self.leftConstraint?.isActive = true
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     
